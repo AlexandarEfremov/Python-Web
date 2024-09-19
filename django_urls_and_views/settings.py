@@ -19,9 +19,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-m(a3&xn)6in))=u!_)6d8k7ai!8h0p96fjhirxzi4mrk-cj5s7'
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
+
+username = os.getenv("db_username")
+password = os.getenv("db_password")
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_urls_and_views.department'
 ]
 
 MIDDLEWARE = [
@@ -75,9 +81,13 @@ WSGI_APPLICATION = 'django_urls_and_views.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "django_urls_and_views",
+        "USER": "username",
+        "PASSWORD": "password",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
