@@ -24,8 +24,8 @@ import os
 
 load_dotenv()
 
-username = os.getenv("db_username")
-password = os.getenv("db_password")
+username = os.getenv("DB_USERNAME")
+password = os.getenv("DB_PASSWORD")
 SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -84,8 +84,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "django_urls_and_views",
-        "USER": "username",
-        "PASSWORD": "password",
+        "USER": username,
+        "PASSWORD": password,
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
