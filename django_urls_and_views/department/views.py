@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django_urls_and_views.department.models import Department
 
@@ -19,3 +19,12 @@ def show_archive(request, archive_year):
 
 def view_with_name(request, variable):
     return render(request, "departments/name_template.html", {"variable": variable})
+
+
+def redirect_to_softuni(request):
+    return redirect("https://softuni.bg")
+
+
+def internal_redirect(request):
+    # return redirect(index) Option1
+    return redirect('home')
